@@ -1,0 +1,32 @@
+ext {
+  productVersion = '6.0'
+  aaCommonsVer = '1.6.4' // SNAPSHOT should be removed once Common is stabilized.
+  crSdkVer = '11.3.4-SNAPSHOT'
+  gradleVer = '3.5'
+  jacocoVer = '0.7.9'
+  checkstyleVer = '8.1'
+  blackduckHubVer = '5.0.0'
+  sonarqubeVer = '2.5'
+  swaggerVer = '2.9.2'
+  tikaVer = '1.20'
+
+  springBootVer = '1.5.22.RELEASE'
+  swagger2Ver = '2.7.0'
+  log4j2Ver = '2.10.0'
+  disruptorVer = '3.3.7'
+  jacksonCoreVer = '2.10.0'
+  jacksonDataformatYamlVer = '2.10.0'
+  jsonSchemaValidatorVer = '2.2.8'
+  mssqlVer = '7.2.1.jre8'
+  hibernateVer="5.2.12.Final"
+  dbcpVer = '2.1.1'
+  httpAsyncClientVer = '4.1.3'
+
+  testNgVer = '6.9.10'
+  assertjVer = '3.8.0'
+  mockitoVer = '2.8.47'
+  gaugePluginVer= '1.5.0'
+  gaugeVer= '0.6.5'
+  rabbitmqVer = '5.6.0'
+  everitVer = '1.5.1'
+}
