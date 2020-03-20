@@ -18,31 +18,21 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 group 'com.automationanywhere.cognitive'
-version '1.0-SNAPSHOT'
+version '1.0'
 
 sourceCompatibility = 1.8
-mainClassName = 'com.automationanywhere.cognitive.iqbot.PerfApplication'
+mainClassName = 'com.automationanywhere.cognitive.iqbot.Main'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile "com.opencsv:opencsv:4.0"
-    compile group: 'org.apache.poi', name: 'poi', version: '3.9'
-	compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.9'
-    
-    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "com.opencsv:opencsv:${openCsvVer}"
+    compile "org.apache.poi:poi:${poiVer}"
+	compile "org.apache.poi:poi-ooxml:${poiOoxmlVer}"
     compile 'org.springframework.boot:spring-boot-starter-log4j2'
-    compile 'org.springframework:spring-orm'
-    compile "io.springfox:springfox-swagger-ui:${swagger2Ver}"
-    compile "io.springfox:springfox-swagger2:${swagger2Ver}"
-    compile "io.springfox:springfox-spring-web:${swagger2Ver}"
-    compile "io.springfox:springfox-swagger2:${swaggerVer}"
-    
-    testCompile("org.springframework.boot:spring-boot-starter-test")
-    testCompile "org.springframework:spring-test"
-    testCompile "org.springframework.boot:spring-boot-test"
+
     testCompile "org.testng:testng:${testNgVer}"
     testCompile "org.assertj:assertj-core:${assertjVer}"
     testCompile "org.mockito:mockito-core:${mockitoVer}"

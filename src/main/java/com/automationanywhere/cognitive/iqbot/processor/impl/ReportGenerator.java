@@ -9,6 +9,8 @@ import com.automationanywhere.cognitive.iqbot.model.Perct90;
 import com.automationanywhere.cognitive.iqbot.model.ReportData;
 import com.automationanywhere.cognitive.iqbot.model.Sample;
 import com.automationanywhere.cognitive.iqbot.processor.FileProcessor;
+import com.automationanywhere.cognitive.iqbot.util.AppUtil;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -33,6 +35,7 @@ public class ReportGenerator implements FileProcessor {
   private final String outputFileName;
   public XSSFWorkbook workbook;
   private static DecimalFormat df = new DecimalFormat("0.00");
+  private static final String outputFileExt=".xlsx";
   private Map<String, List<String>> transactionMap;
   private Map<String, Double> timeConsumptionMap;
   private Map<String, String> apiTransactionMap;
@@ -69,15 +72,21 @@ public class ReportGenerator implements FileProcessor {
     // There are different sheets need to be generated.
     // We need to first create the raw data sheet.
     createRawSheet(reportData, fileNames, headers);
+    // Now create detail sheet
     createDetailSheet(reportData, fileNames, headers);
+    // Error sheet
     createErrorSheet(reportData, errorHeaders);
+    // Most time consuming api sheet
     createTimeConsumptionSheet(timeConsumptionHeader);
 
-    try (FileOutputStream outputStream = new FileOutputStream(outputFileName + ".xlsx")) {
+    try (FileOutputStream outputStream = new FileOutputStream(AppUtil.getOutputFile(outputFilePath, outputFileName + outputFileExt))) {
       workbook.write(outputStream);
+      System.out.println("Report Generated Successfully.");
     } catch (FileNotFoundException e) {
+      System.out.println("Error while generating report:::");
       e.printStackTrace();
     } catch (IOException e) {
+      System.out.println("Error while generating report:::");
       e.printStackTrace();
     }
   }
