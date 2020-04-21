@@ -15,10 +15,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.apache.commons.lang3.StringUtils;
 
 public class ReportReader {
 
-  private List<String> fileList;
+  private List<String> fileList = new ArrayList<>();
   private List<String> fileNameList;
   private final String filePath;
   private final String fileExt;
@@ -60,20 +61,22 @@ public class ReportReader {
     for (Map.Entry<String, List<AggregateData>> data : map.entrySet()) {
       List<AggregateData> aggregateDataList = data.getValue();
       for (AggregateData aggregateData : aggregateDataList) {
-        // Sample
-        rData.setSampleValueInMap(aggregateData);
-        // Average
-        rData.setAvgValueInMap(aggregateData);
-        // Median
-        rData.setMedianValueInMap(aggregateData);
-        // 90 Percentile
-        rData.setPerct90ValueInMap(aggregateData);
-        // Min
-        rData.setMinValueInMap(aggregateData);
-        // Max
-        rData.setMaxValueInMap(aggregateData);
-        // Error
-        rData.setErrorValueInMap(aggregateData);
+        if(StringUtils.isNotBlank(aggregateData.getLabel())) {
+          // Sample
+          rData.setSampleValueInMap(aggregateData);
+          // Average
+          rData.setAvgValueInMap(aggregateData);
+          // Median
+          rData.setMedianValueInMap(aggregateData);
+          // 90 Percentile
+          rData.setPerct90ValueInMap(aggregateData);
+          // Min
+          rData.setMinValueInMap(aggregateData);
+          // Max
+          rData.setMaxValueInMap(aggregateData);
+          // Error
+          rData.setErrorValueInMap(aggregateData);
+        }
       }
     }
     return rData;

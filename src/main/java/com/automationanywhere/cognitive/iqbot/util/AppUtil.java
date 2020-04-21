@@ -4,7 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import org.apache.commons.lang3.StringUtils;
 
 public class AppUtil {
 
@@ -43,5 +47,32 @@ public class AppUtil {
       }
     }
     return f.getAbsoluteFile();
+  }
+
+  public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
+    List<Entry<K, V>> list = new ArrayList<>(map.entrySet());
+    list.sort(Entry.comparingByValue());
+
+    Map<K, V> result = new LinkedHashMap<>();
+    for(int i=list.size()-1; i>-1; i--) {
+      Entry<K, V> entry = list.get(i);
+      result.put(entry.getKey(), entry.getValue());
+    }
+    return result;
+  }
+
+  public static double getNumberValue(String errorStr) {
+    return Double.parseDouble(errorStr.replace("%", ""));
+  }
+
+  public static boolean isTransaction(String apiName) {
+    boolean containsDigit = false;
+
+    if (StringUtils.isNotBlank(apiName)) {
+      if(apiName.matches(".*[_][0-9]*[\\s]*[\\/].*")) {
+        containsDigit = true;
+      }
+    }
+    return !containsDigit;
   }
 }

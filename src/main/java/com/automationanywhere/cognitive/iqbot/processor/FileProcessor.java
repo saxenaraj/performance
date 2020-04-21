@@ -7,6 +7,6 @@ import java.util.Map;
 
 public interface FileProcessor {
 
-  public void fileProcessor(ReportData reportData, List<String> fileNames, List<String> headers,
+  public Map<String, Object> fileProcessor(Map<String, ReportData> reportData, Map<String, List<String>> fileNameMap, List<String> headers,
       List<String> errorHeaders, List<String> timeConsumptionHeader);
 }
