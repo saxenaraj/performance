@@ -7,15 +7,7 @@ TO use this tool the input file is the csv file which can be obtained by JMETER 
 2. JDK 1.8 or higher is installed and running in command prompt.
 3. Download the ReportGenerator-<version>-SNAPSHOT.jar file.
 4. Download the app.properties file in the same folder of ReportGenerator-<version>-SNAPSHOT.jar file.
-5. Keep all the files in one folder which needs to be part of the same report.
-e.g. 
-
-
-
-
-
-6. the
- 
+5. Keep all the files in one folder which needs to be part of the same report. 
 
 ##### How to run:
 1. Update the app.properties with requirements and save it. 
